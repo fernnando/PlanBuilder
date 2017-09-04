@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PlanBuilder</string>
+    <string name="add_new_entry">Pressiona \'+\' para nova ficha</string>
 </resources>
