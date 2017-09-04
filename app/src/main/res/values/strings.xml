@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">PlanBuilder</string>
     <string name="add_new_entry">Pressiona \'+\' para nova ficha</string>
+    <string name="btn_save">Salvar</string>
+    <string name="add_new_exercise">+ Adicionar novo exercício</string>
+    <string name="hint_new_program_name">Nome</string>
+    <string name="hint_new_program_start_date">Início</string>
+    <string name="hint_new_program_end_date">Término</string>
+    <string name="label_exercises">Exercícios</string>
+    <string name="label_exercise_name">Nome do exercício</string>
+    <string name="label_exercise_reps">Reps.</string>
+    <string name="label_exercise_weight">Peso(kg)</string>
 </resources>
