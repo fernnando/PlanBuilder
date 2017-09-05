@@ -5,4 +5,9 @@ package co.fddittmar.planbuilder.contracts;
  */
 
 public class ProgramDetailContract {
+    public interface View {
+    }
+
+    public interface Actions {
+    }
 }
