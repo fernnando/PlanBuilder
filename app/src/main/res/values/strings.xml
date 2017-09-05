@@ -10,4 +10,6 @@
     <string name="label_exercise_name">Nome do exercício</string>
     <string name="label_exercise_reps">Reps.</string>
     <string name="label_exercise_weight">Peso(kg)</string>
+    <string name="label_program_detail_start_date">Início:</string>
+    <string name="label_program_detail_end_date">Término</string>
 </resources>

@@ -63,6 +63,7 @@
             android:layout_marginStart="16dp" />
 
         <TextView
+            style="@style/Title"
             android:id="@+id/tv_exercises_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,6 +88,7 @@
 
             <TextView
                 android:id="@+id/tv_label_exercise_name"
+                style="@style/BoldedSubtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -97,6 +99,7 @@
 
             <TextView
                 android:id="@+id/tv_label_exercise_reps"
+                style="@style/BoldedSubtitle"
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:layout_height="wrap_content"
@@ -107,6 +110,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_exercises_title" />
 
             <TextView
+                style="@style/BoldedSubtitle"
                 android:id="@+id/tv_label_exercise_weight"
                 android:layout_width="0dp"
                 android:layout_weight="3"
@@ -151,6 +155,7 @@
 
             <TextView
                 android:id="@+id/tv_new_exercise"
+                style="@style/NewEntryLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -158,6 +163,7 @@
         </FrameLayout>
 
         <Button
+            style="@style/SaveButton"
             android:id="@+id/btn_save_program"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

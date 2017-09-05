@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
+        style="@style/NewEntryLabel"
         android:id="@+id/tv_new_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

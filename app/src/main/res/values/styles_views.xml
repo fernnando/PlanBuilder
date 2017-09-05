@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NewEntryLabel">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:alpha">.86</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
+    <style name="BoldedSubtitle">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+    </style>
+
+    <style name="ProgramDate">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+    </style>
+
+    <style name="SaveButton" parent="android:Widget.Button">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+</resources>
