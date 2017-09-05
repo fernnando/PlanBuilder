@@ -32,15 +32,15 @@ public class Exercise implements Serializable {
         return id;
     }
 
-    private String getName() {
+    public String getName() {
         return name;
     }
 
-    private int getReps() {
+    public int getReps() {
         return reps;
     }
 
-    private int getWeight() {
+    public int getWeight() {
         return weight;
     }
 
