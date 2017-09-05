@@ -12,4 +12,7 @@
     <string name="label_exercise_weight">Peso(kg)</string>
     <string name="label_program_detail_start_date">Início:</string>
     <string name="label_program_detail_end_date">Término</string>
+    <string name="content_description_iv_program">Ícone representando um halter</string>
+    <string name="remove">Remover</string>
+
 </resources>
