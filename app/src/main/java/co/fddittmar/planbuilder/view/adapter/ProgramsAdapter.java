@@ -16,7 +16,7 @@ import co.fddittmar.planbuilder.data.model.Program;
 import co.fddittmar.planbuilder.view.MainActivity;
 
 /**
- * Adapter to represent a list of Programs
+ * Adapter to represent a list of Programs items
  */
 
 public class ProgramsAdapter extends RecyclerView.Adapter<ProgramsAdapter.ViewHolder>{

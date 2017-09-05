@@ -14,5 +14,10 @@
     <string name="label_program_detail_end_date">Término</string>
     <string name="content_description_iv_program">Ícone representando um halter</string>
     <string name="remove">Remover</string>
+    <string name="new_entry">Nova ficha</string>
+    <string name="title_error">Insiria um título válido</string>
+    <string name="hint_dialog_exercise_name">Nome do exercício</string>
+
+
 
 </resources>
