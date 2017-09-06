@@ -20,7 +20,6 @@ import com.basgeekball.awesomevalidation.ValidationStyle;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,12 +50,14 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     @BindView(R.id.rv_list_exercises)
     RecyclerView rvExercisesList;
 
+    private static final String STATE_ITEMS = "items";
+
     NewProgramPresenter presenter;
 
     DateFormat dateFormat = DateFormat.getDateInstance();
     Calendar startDateCalendar = Calendar.getInstance();
     Calendar endDateCalendar = Calendar.getInstance();
-    List<Exercise> exercises = new ArrayList<>();
+    ArrayList<Exercise> exercises = new ArrayList<>();
     ExercisesAdapter adapter;
 
     // Defining AwesomeValidation object
@@ -67,6 +68,10 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_program);
         ButterKnife.bind(this);
+
+        if(savedInstanceState != null){
+            exercises = (ArrayList<Exercise>) savedInstanceState.getSerializable(STATE_ITEMS);
+        }
 
         if(presenter == null){
             presenter = new NewProgramPresenter(this, SQLiteDatabaseHelper.getInstance(this));
@@ -95,6 +100,18 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
         adapter = new ExercisesAdapter(exercises);
         rvExercisesList.setAdapter(adapter);
 
+    }
+
+    /**
+     * Method to save the exercises list when configuration changes,
+     * and later restore it in the onCreate() method.
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Make sure to call the super method so that the states of our views are saved
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+        outState.putSerializable(STATE_ITEMS, exercises);
     }
 
     /**
