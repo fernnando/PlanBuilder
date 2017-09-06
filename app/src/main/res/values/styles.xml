@@ -6,6 +6,28 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionModeStyle">@style/LStyled.ActionMode</item>
+    </style>
+
+
+    <!-- Base application theme.Without ActionBar -->
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionModeStyle">@style/LStyled.ActionMode</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_fitness_center_black_36px</item>
+        <item name="windowActionModeOverlay">true</item>
+
+    </style>
+
+
+    <style name="LStyled.ActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@color/colorSecondary</item>
     </style>
 
 </resources>
