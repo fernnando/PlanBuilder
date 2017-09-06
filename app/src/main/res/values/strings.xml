@@ -22,4 +22,5 @@
     <string name="new_entry">Nova ficha</string>
 
     <string name="title_error">Insiria um título válido</string>
+    <string name="remove">remove</string>
 </resources>
