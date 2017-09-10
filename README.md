@@ -1,4 +1,4 @@
-# PlanBuilder<img align="left" src="app/src/main/ic_launcher-web.png" alt="Login Screen" width="40" height="40"/>
+# PlanBuilder (Kotlin version)<img align="left" src="app/src/main/ic_launcher-web.png" alt="Login Screen" width="40" height="40"/>
 
 O PlanBuilder é um app para android desenvolvido com a finalidade de cadastrar fichas de acompanhamento de academias. Nele é possível cadastrar fichas com um título, data de início do programa de atividades, data de término e uma lista de exercícios vinculados. Os exercícios são descritos com o nome do exercício, número de repetições e o peso(em kg) utilizado em cada repetição.
 
