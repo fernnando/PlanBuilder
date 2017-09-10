@@ -123,7 +123,7 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
         tvNewEntry.visibility = View.VISIBLE
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode != RESULT_CANCELED) {
             presenter!!.checkActivityResult(resultCode)
         }
