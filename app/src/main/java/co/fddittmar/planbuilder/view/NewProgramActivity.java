@@ -74,7 +74,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
         }
 
         if(presenter == null){
-            presenter = new NewProgramPresenter(this, SQLiteDatabaseHelper.getInstance(this));
+            presenter = new NewProgramPresenter(this, SQLiteDatabaseHelper.Companion.getInstance(this));
         }
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
