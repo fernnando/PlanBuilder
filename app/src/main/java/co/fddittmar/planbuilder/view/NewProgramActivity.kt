@@ -10,7 +10,6 @@ import android.support.constraint.ConstraintLayout
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -229,14 +228,15 @@ class NewProgramActivity : BaseActivity(), NewProgramContract.View {
         val etWeight = mView.findViewById(R.id.et_exercise_weight) as EditText
 
         mBuilder.setPositiveButton("Adicionar") { _, which ->
+            val reps = if(etReps.text.toString() == "") 0 else Integer.parseInt(etReps.text.toString())
+            val weight = if(etWeight.text.toString() == "") 0 else Integer.parseInt(etWeight.text.toString())
+
             exercises.add(Exercise(
                     etName.text.toString(),
-                    Integer.parseInt(etReps.text.toString()),
-                    Integer.parseInt(etWeight.text.toString())
+                    reps,
+                    weight
             ))
             adapter?.notifyDataSetChanged()
-
-            Log.d("List:", "" + adapter?.itemCount)
         }
 
         mBuilder.setNegativeButton("Cancelar") { dialog, which -> dialog.dismiss() }
