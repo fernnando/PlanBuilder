@@ -1,9 +1,7 @@
 package co.fddittmar.planbuilder.view
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.IdRes
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -126,7 +124,9 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        presenter!!.checkActivityResult(resultCode)
+        if(resultCode != RESULT_CANCELED) {
+            presenter!!.checkActivityResult(resultCode)
+        }
     }
 
     override fun newProgramAdded() {
@@ -222,11 +222,6 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
 
     override fun onNeutralClick(from: Int) {
 
-    }
-
-    fun <T : View> Activity.bind(@IdRes res : Int) : T {
-        @Suppress("UNCHECKED_CAST")
-        return findViewById(res) as T
     }
 }
 
