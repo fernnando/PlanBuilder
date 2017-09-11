@@ -10,7 +10,6 @@ import android.support.constraint.ConstraintLayout
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
@@ -95,7 +94,7 @@ class NewProgramActivity : BaseActivity(), NewProgramContract.View {
     }
 
     /**
-     * Method to setup the exercises list adapter
+     * Setup the exercises list adapter
      */
     private fun setupAdapter() {
         rvExercisesList.setHasFixedSize(true)
@@ -180,8 +179,7 @@ class NewProgramActivity : BaseActivity(), NewProgramContract.View {
     }
 
     /**
-     * Method that will create an error dialog informing the user that the 'EndDate' is before the
-     * 'StartDate'.
+     * Create an error dialog informing the user that the 'EndDate' is before the 'StartDate'.
      */
     private fun showDateErrorDialog() {
         // Setup the alert builder
@@ -205,8 +203,8 @@ class NewProgramActivity : BaseActivity(), NewProgramContract.View {
     }
 
     /**
-     * This method will send the 'RESULT_OK' response to the MainActivity when sucessfully adds a
-     * new program and close this activity.
+     * Send the 'RESULT_OK' response to the MainActivity when sucessfully adds a new program
+     * and close this activity.
      */
     override fun returnToMainActivity() {
         val intent = Intent()
@@ -215,7 +213,7 @@ class NewProgramActivity : BaseActivity(), NewProgramContract.View {
     }
 
     /**
-     * This method will create a dialog with exercise's NAME, NUMBER OF REPS and WEIGHT. If the user
+     * Create a dialog with exercise's NAME, NUMBER OF REPS and WEIGHT. If the user
      * clicks the 'OK' button, it will add the data to the 'exercises' vector and update the adapter
      * that handles the exercises list on the screen. Otherwise, if the user clicks on the 'CANCEL'
      * option, it will just dismiss the dialog.
@@ -248,7 +246,7 @@ class NewProgramActivity : BaseActivity(), NewProgramContract.View {
     }
 
     /**
-     * Method to hide the keyboard when the user touches anywhere on the screen.
+     * Hide the keyboard when the user touches anywhere on the screen.
      */
     fun onTouch(): Boolean {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

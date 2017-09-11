@@ -59,6 +59,9 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
         startAdapter()
     }
 
+    /**
+     * Setup the Programs' list adapter
+     */
     private fun startAdapter() {
         rvProgramsList = bind(R.id.rv_programs_list)
 
@@ -100,49 +103,74 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
         }))
     }
 
+    /**
+     * Start the 'NewProgramActivity' when the user clicks in Floating Action Button (FAB)
+     */
     override fun openNewProgramActivity() {
         val intent = Intent(this, NewProgramActivity::class.java)
         startActivityForResult(intent, 0)
     }
 
+    /**
+     * Send to the presenter the event that the user clicked on an item from the adapter.
+     */
     fun itemProgramClicked(program: Program) {
         presenter!!.onItemProgramClicked(program)
     }
 
+    /**
+     * Start the 'ProgramDetailActivity' when the user clicks in an item from the programs'
+     * list adapter.
+     */
     override fun openProgramDetailActivity(program: Program) {
         val intent = Intent(this, ProgramDetailActivity::class.java)
         intent.putExtra("program", program)
         startActivity(intent)
     }
 
+    /**
+     * Hide the text '+ Add new entry'. (When there's no Programs to show)
+     */
     override fun hideNewProgramText() {
         tvNewEntry.visibility = View.GONE
     }
 
+    /**
+     * Show the text '+ Add new entry'.
+     */
     override fun showNewProgramText() {
         tvNewEntry.visibility = View.VISIBLE
     }
 
+    /**
+     * Send to the presenter the result from the 'NewProgramActivity'
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode != RESULT_CANCELED) {
             presenter!!.checkActivityResult(resultCode)
         }
     }
 
+    /**
+     * Refresh the adapter when there's a new entry.
+     */
     override fun newProgramAdded() {
         programList = presenter!!.allPrograms
         refreshAdapter()
     }
 
+    /**
+     * Refresh the Programs' adapter.
+     */
     override fun refreshAdapter() {
-
         adapter!!.selected_usersList = multiselect_list
         adapter!!.programs = programList
         adapter!!.notifyDataSetChanged()
     }
 
-
-    //TEMPORARY
+    /**
+    * Handles the items selection from the user after a long click.
+    */
     fun multi_select(position: Int) {
         if (mActionMode != null) {
             if (multiselect_list.contains(programList[position]))
@@ -160,6 +188,9 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
         }
     }
 
+    /**
+     * Class that handles the Contextual Action Bar and its actions, like deleting.
+     */
     private val mActionModeCallback = object : ActionMode.Callback {
 
         override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
@@ -198,8 +229,9 @@ class MainActivity : BaseActivity(), MainContract.View, AlertDialogHelper.AlertD
     }
 
 
-    // AlertDialog Callback Functions
-
+    /**
+     * AlertDialog Callback Functions
+     */
     override fun onPositiveClick(from: Int) {
         if (multiselect_list.size > 0) {
             for (i in multiselect_list) {

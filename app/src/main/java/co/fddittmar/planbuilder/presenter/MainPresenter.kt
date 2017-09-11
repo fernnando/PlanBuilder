@@ -1,7 +1,6 @@
 package co.fddittmar.planbuilder.presenter
 
 import android.app.Activity.RESULT_OK
-import android.util.Log
 import co.fddittmar.planbuilder.contracts.MainContract
 import co.fddittmar.planbuilder.data.ProgramRepository
 import co.fddittmar.planbuilder.data.model.Program
@@ -14,8 +13,6 @@ class MainPresenter(internal var view: MainContract.View, internal var repositor
 
     override val allPrograms: ArrayList<Program>
         get() {
-            if (repository == null)
-                Log.d("DEBUG", "Null repository")
             return repository!!.fetchAllPrograms()
         }
 

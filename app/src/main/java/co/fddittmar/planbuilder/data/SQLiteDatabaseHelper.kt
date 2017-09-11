@@ -34,8 +34,8 @@ class SQLiteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, SQLiteD
         createProgram(Program(title, startDate, endDate, exercises))
     }
 
-    /*
-    * Creating a Program
+    /**
+    * Create a Program
     */
     private fun createProgram(program: Program): Long {
         val db = this.writableDatabase
@@ -55,7 +55,7 @@ class SQLiteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, SQLiteD
         return program_id
     }
 
-    /*
+    /**
      * Get a single Program
      */
     fun getProgram(program_id: Long): Program {
@@ -80,9 +80,9 @@ class SQLiteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, SQLiteD
         return program
     }
 
-    /*
-    * Getting all Programs
-    * */
+    /**
+    * Fetch all Programs from the database
+    */
     override fun fetchAllPrograms(): ArrayList<Program> {
         val programs = ArrayList<Program>()
         val selectQuery = "SELECT  * FROM " + TABLE_PROGRAMS
@@ -114,18 +114,18 @@ class SQLiteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, SQLiteD
     }
 
 
-    /*
-        * Deleting a Program
-        */
+    /**
+     * Delete a Program from the database
+     */
     override fun deleteProgram(program_id: Long) {
         val db = this.writableDatabase
-        db.delete(TABLE_PROGRAMS, KEY_ID + " = ?",
-                arrayOf(program_id.toString()))
-        db.delete(TABLE_EXERCISES, KEY_PROGRAM_ID + " = ?",
-                arrayOf(program_id.toString()))
+        val programReference = arrayOf(program_id.toString())
+
+        db.delete(TABLE_PROGRAMS, KEY_ID + " = ?", programReference)
+        db.delete(TABLE_EXERCISES, KEY_PROGRAM_ID + " = ?", programReference)
     }
 
-    /*
+    /**
     * Creating a Exercise
     */
     fun createExercise(exercise: Exercise, program_id: Long): Long {
@@ -141,9 +141,9 @@ class SQLiteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, SQLiteD
         return db.insert(TABLE_EXERCISES, null, values)
     }
 
-    /*
-    * Getting all todos under single tag
-    * */
+    /**
+    * Getting all Exercises of a Program
+    */
     fun getAllExercisesByProgram(program_id: Long): List<Exercise> {
         val exercises = ArrayList<Exercise>()
 
