@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        //TEMPORARY
         alertDialogHelper =new AlertDialogHelper(this);
 
         //Check if presenter is already created
@@ -63,6 +62,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
         startAdapter();
     }
 
+    /**
+     * Setup the Programs' list adapter
+     */
     private void startAdapter() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rvProgramsList.setLayoutManager(layoutManager);
@@ -110,15 +112,25 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
         presenter.onAddBtnClicked();
     }
 
+    /**
+     * Start the 'NewProgramActivity' when the user clicks in Floating Action Button (FAB)
+     */
     public void openNewProgramActivity() {
         Intent intent = new Intent(this, NewProgramActivity.class);
         startActivityForResult(intent, 0);
     }
 
+    /**
+     * Send to the presenter the event that the user clicked on an item from the adapter.
+     */
     public void itemProgramClicked(Program program) {
         presenter.onItemProgramClicked(program);
     }
 
+    /**
+     * Start the 'ProgramDetailActivity' when the user clicks in an item from the programs'
+     * list adapter.
+     */
     @Override
     public void openProgramDetailActivity(Program program) {
         Intent intent = new Intent(this, ProgramDetailActivity.class);
@@ -126,26 +138,42 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
         startActivity(intent);
     }
 
+    /**
+     * Hide the text '+ Add new entry'. (When there's no Programs to show)
+     */
     @Override
     public void hideNewProgramText() {
         tvNewEntry.setVisibility(View.GONE);
     }
+
+    /**
+     * Show the text '+ Add new entry'.
+     */
     @Override
     public void showNewProgramText() {
         tvNewEntry.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Send to the presenter the result from the 'NewProgramActivity'
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         presenter.checkActivityResult(resultCode);
     }
 
+    /**
+     * Refresh the adapter when there's a new entry.
+     */
     @Override
     public void newProgramAdded(){
         programList = presenter.getAllPrograms();
         refreshAdapter();
     }
 
+    /**
+     * Refresh the Programs' adapter.
+     */
     @Override
     public void refreshAdapter() {
 
@@ -154,8 +182,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
         adapter.notifyDataSetChanged();
     }
 
-
-    //TEMPORARY
+    /**
+     * Handles the items selection from the user after a long click.
+     */
     public void multi_select(int position) {
         if (mActionMode != null) {
             if (multiselect_list.contains(programList.get(position)))
@@ -173,6 +202,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
         }
     }
 
+    /**
+     * Class that handles the Contextual Action Bar and its actions, like deleting.
+     */
     private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
 
         @Override
@@ -215,8 +247,9 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
     };
 
 
-    // AlertDialog Callback Functions
-
+    /**
+     * AlertDialog Callback Functions
+     */
     @Override
     public void onPositiveClick(int from) {
         if(multiselect_list.size()>0)
@@ -245,4 +278,3 @@ public class MainActivity extends BaseActivity implements MainContract.View, Ale
 
     }
 }
-

@@ -93,9 +93,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper implements ProgramRep
         createProgram(new Program(title, startDate, endDate, exercises));
     }
 
-    /*
-    * Creating a Program
-    */
+    /**
+     * Create a Program
+     */
     private long createProgram(Program program) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -114,7 +114,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper implements ProgramRep
         return program_id;
     }
 
-    /*
+    /**
      * Get a single Program
      */
     public Program getProgram(long program_id) {
@@ -141,9 +141,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper implements ProgramRep
         return program;
     }
 
-    /*
-    * Getting all Programs
-    * */
+    /**
+     * Fetch all Programs from the database
+     */
     public List<Program> fetchAllPrograms() {
         List<Program> programs = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_PROGRAMS;
@@ -175,18 +175,20 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper implements ProgramRep
     }
 
 
-    /*
-        * Deleting a Program
-        */
+    /**
+     * Delete a Program from the database
+     */
     public void deleteProgram(long program_id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PROGRAMS, KEY_ID + " = ?",
-                new String[] { String.valueOf(program_id) });
+        String[] programReference = new String[] { String.valueOf(program_id) };
+
+        db.delete(TABLE_PROGRAMS, KEY_ID + " = ?", programReference);
+        db.delete(TABLE_EXERCISES, KEY_PROGRAM_ID + " = ?", programReference);
     }
 
-    /*
-    * Creating a Exercise
-    */
+    /**
+     * Creating an Exercise
+     */
     public long createExercise(Exercise exercise, long program_id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -200,9 +202,9 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper implements ProgramRep
         return db.insert(TABLE_EXERCISES, null, values);
     }
 
-    /*
-    * Getting all todos under single tag
-    * */
+    /**
+     * Getting all Exercises of a Program
+     */
     public List<Exercise> getAllExercisesByProgram(long program_id) {
         List<Exercise> exercises = new ArrayList<>();
 
@@ -232,6 +234,12 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper implements ProgramRep
         return exercises;
     }
 
+    /**
+     * Ensures that only one DatabaseHelper will ever exist at any given time. If the sInstance
+     * object has not been initialized, one will be created. If one has already been created then
+     * it will simply be returned.
+     * Source: http://www.androiddesignpatterns.com/2012/05/correctly-managing-your-sqlite-database.html
+     */
     public static synchronized SQLiteDatabaseHelper getInstance(Context context) {
         // Use the application context, which will ensure that you
         // don't accidentally leak an Activity's context.

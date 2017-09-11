@@ -1,7 +1,5 @@
 package co.fddittmar.planbuilder.presenter;
 
-import android.util.Log;
-
 import java.util.List;
 
 import co.fddittmar.planbuilder.contracts.MainContract;
@@ -25,8 +23,6 @@ public class MainPresenter implements MainContract.Actions {
 
     @Override
     public List<Program> getAllPrograms() {
-        if(repository == null)
-            Log.d("DEBUG", "Null repository");
         return repository.fetchAllPrograms();
     }
 

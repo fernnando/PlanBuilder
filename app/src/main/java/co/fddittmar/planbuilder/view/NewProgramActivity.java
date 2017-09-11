@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
@@ -103,8 +102,8 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * Method to save the exercises list when configuration changes,
-     * and later restore it in the onCreate() method.
+     * Save the exercises list when configuration changes, and later restore it in the
+     * onCreate() method.
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -115,7 +114,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * Method that creates a DatePickerDialog for the 'EndDate' input. It also disable the dates
+     * Create a DatePickerDialog for the 'EndDate' input. It also disable the dates
      * before the 'StartDate'.
      */
     @OnClick(R.id.et_start_date)
@@ -135,7 +134,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * Method that creates a DatePickerDialog for the 'EndDate' input. It also disable the dates
+     * Create a DatePickerDialog for the 'EndDate' input. It also disable the dates
      * before the 'StartDate'.
      */
     @OnClick(R.id.et_end_date)
@@ -158,7 +157,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * This method will send to the presenter the user will to add a new exercise
+     * Send to the presenter the user will to add a new exercise
      */
     @OnClick(R.id.container_add_exercise)
     public void addExercise(){
@@ -186,8 +185,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
         }
     }
     /**
-     * Method that will create an error dialog informing the user that the 'EndDate' is before the
-     * 'StartDate'.
+     * Create an error dialog informing the user that the 'EndDate' is before the 'StartDate'.
      */
     private void showDateErrorDialog() {
         // Setup the alert builder
@@ -211,8 +209,8 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * This method will send the 'RESULT_OK' response to the MainActivity when sucessfully adds a
-     * new program and close this activity.
+     * send the 'RESULT_OK' response to the MainActivity when sucessfully adds a new program
+     * and close this activity.
      */
     @Override
     public void returnToMainActivity() {
@@ -222,7 +220,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * This method will create a dialog with exercise's NAME, NUMBER OF REPS and WEIGHT. If the user
+     * Create a dialog with exercise's NAME, NUMBER OF REPS and WEIGHT. If the user
      * clicks the 'OK' button, it will add the data to the 'exercises' vector and update the adapter
      * that handles the exercises list on the screen. Otherwise, if the user clicks on the 'CANCEL'
      * option, it will just dismiss the dialog.
@@ -239,15 +237,16 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
         mBuilder.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                int reps = etReps.getText().toString().equals("")? 0 : Integer.parseInt(etReps.getText().toString()) ;
+                int weight = etWeight.getText().toString().equals("")? 0 : Integer.parseInt(etWeight.getText().toString()) ;
 
                 exercises.add(new Exercise(
                         etName.getText().toString(),
-                        Integer.parseInt(etReps.getText().toString()),
-                        Integer.parseInt(etWeight.getText().toString())
+                        reps,
+                        weight
                 ));
                 adapter.notifyDataSetChanged();
 
-                Log.d("List:", ""+adapter.getItemCount());
             }
         });
 
@@ -264,7 +263,7 @@ public class NewProgramActivity extends BaseActivity implements NewProgramContra
     }
 
     /**
-     * Method to hide the keyboard when the user touches anywhere on the screen.
+     * Hide the keyboard when the user touches anywhere on the screen.
      */
     @OnTouch(R.id.root_viewgroup)
     public boolean onTouch() {
