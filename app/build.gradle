@@ -33,5 +33,9 @@ dependencies {
     compile 'com.basgeekball:awesome-validation:2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
+    // Dependency Injection
+    compile 'com.google.dagger:dagger:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+
     testCompile 'junit:junit:4.12'
 }
