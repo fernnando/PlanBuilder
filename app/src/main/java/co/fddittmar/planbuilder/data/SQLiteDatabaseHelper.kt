@@ -121,6 +121,8 @@ class SQLiteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, SQLiteD
         val db = this.writableDatabase
         db.delete(TABLE_PROGRAMS, KEY_ID + " = ?",
                 arrayOf(program_id.toString()))
+        db.delete(TABLE_EXERCISES, KEY_PROGRAM_ID + " = ?",
+                arrayOf(program_id.toString()))
     }
 
     /*

@@ -67,6 +67,7 @@ class ProgramsAdapter(var activity: MainActivity, programs: List<Program>, selec
 
         override fun onClick(view: View) {
             activity.itemProgramClicked(programs[adapterPosition])
+
         }
     }
 }
